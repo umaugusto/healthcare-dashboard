@@ -6,6 +6,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  output: 'export',
+  trailingSlash: true,
   images: {
     domains: [
       'bgivemisrbkdtmbxojlu.supabase.co',
