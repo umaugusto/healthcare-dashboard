@@ -4,8 +4,8 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useEpidemiologicalData } from '@/hooks/useEpidemiologicalData';
-import { GlobalFilters } from '@/types';
-import { correlations } from '@/data/correlations';
+import { Filters } from '@/types';
+import { CORRELACAO_EPIDEMIOLOGICA_HIPERTENSAO } from '@/data/correlations';
 
 // Componente de Tooltip customizado para exibir mais detalhes
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -25,7 +25,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 // Props do componente principal
 interface RastreioCardiovascularChartProps {
-  filters: GlobalFilters;
+  filters: Filters;
 }
 
 export function RastreioCardiovascularChart({ filters }: RastreioCardiovascularChartProps) {
@@ -36,7 +36,7 @@ export function RastreioCardiovascularChart({ filters }: RastreioCardiovascularC
   const [activeCorrelation, setActiveCorrelation] = useState<string | null>(null);
 
   // Busca os dados usando o hook da Versão D
-  const { data, loading } = useEpidemiologicalData('cardiovascular', filters);
+  const { data, loading } = useEpidemiologicalData('cardiovascular', null);
 
   // Função para lidar com o clique em uma barra do gráfico
   const handleBarClick = (data: any) => {
@@ -49,7 +49,7 @@ export function RastreioCardiovascularChart({ filters }: RastreioCardiovascularC
   // Memoiza os dados da correlação para evitar recálculos
   const correlationData = useMemo(() => {
     if (!activeCorrelation) return null;
-    return correlations.cardiovascular[activeCorrelation];
+    return CORRELACAO_EPIDEMIOLOGICA_HIPERTENSAO;
   }, [activeCorrelation]);
 
   // Formata os dados para o gráfico, garantindo que sejam números

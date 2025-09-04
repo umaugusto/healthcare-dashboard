@@ -246,7 +246,7 @@ const aplicarCorrelacaoEpidemiologica = (dadosBase: any, filtro: { tipo: string;
     if (filtro.tipo !== 'controle' && dadosFiltrados.controlesGlicemico) {
         const totalControle = dadosFiltrados.totalLC;
         dadosFiltrados.controlesGlicemico.forEach((controle: any) => {
-            const correlacao = correlacoes[controle.nivel] || 0.33;
+            const correlacao = (correlacoes as any)[controle.nivel] || 0.33;
             controle.quantidade = Math.round(totalControle * correlacao * (controle.percentual / 100));
         });
         const somaControles = dadosFiltrados.controlesGlicemico.reduce((sum: number, c: any) => sum + c.quantidade, 0);
@@ -257,7 +257,7 @@ const aplicarCorrelacaoEpidemiologica = (dadosBase: any, filtro: { tipo: string;
 
     if (dadosFiltrados.topComorbidades) {
         dadosFiltrados.topComorbidades.forEach((comorb: any) => {
-            const correlacao = correlacoes[comorb.cid] || 0.5;
+            const correlacao = (correlacoes as any)[comorb.cid] || 0.5;
             comorb.pacientes = Math.round(populacaoFiltrada * correlacao);
             comorb.percentual = populacaoFiltrada > 0 ? Math.round((comorb.pacientes / populacaoFiltrada) * 100) : 0;
         });
@@ -466,7 +466,7 @@ export default function DiabetesChart({ filters, onNavigateToTable, localFilter,
                 </div>
               </div>
               <div className="mb-4"><StackedBar segments={dados.distribuicaoTipo.segments} onSegmentClick={handleFiltroInterativo} tipoFiltro="tipo-diabetes" filtroAtivo={filtroInterativo} /></div>
-              <div className="flex items-center justify-center gap-4">{dados.distribuicaoTipo.segments.filter(s => s.percentage > 0).map((item, index) => (<div key={index} className="flex items-center gap-1 text-xs"><div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ backgroundColor: item.color }} /><span className="text-gray-600">{item.label.replace('DM ', '')}</span></div>))}</div>
+              <div className="flex items-center justify-center gap-4">{dados.distribuicaoTipo.segments.filter((s: any) => s.percentage > 0).map((item: any, index: number) => (<div key={index} className="flex items-center gap-1 text-xs"><div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ backgroundColor: item.color }} /><span className="text-gray-600">{item.label.replace('DM ', '')}</span></div>))}</div>
             </div>
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-4">
@@ -488,7 +488,7 @@ export default function DiabetesChart({ filters, onNavigateToTable, localFilter,
                 </div>
               </div>
               <div className="mb-4"><StackedBar segments={dados.estratificacaoFramingham.segments} onSegmentClick={handleFiltroInterativo} tipoFiltro="risco-cardiovascular" filtroAtivo={filtroInterativo} /></div>
-              <div className="flex items-center justify-center gap-4">{dados.estratificacaoFramingham.segments.filter(s => s.percentage > 0).map((item, index) => (
+              <div className="flex items-center justify-center gap-4">{dados.estratificacaoFramingham.segments.filter((s: any) => s.percentage > 0).map((item: any, index: number) => (
                 <div key={index} className="flex items-center gap-1 text-xs">
                   <div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ backgroundColor: item.color }} />
                   <span className="text-gray-600">{item.label}</span>
@@ -519,7 +519,7 @@ export default function DiabetesChart({ filters, onNavigateToTable, localFilter,
               </div>
             </div>
             <div className="space-y-1">
-              {dados.funilEpidemiologico.map((item, index) => (
+              {dados.funilEpidemiologico.map((item: any, index: number) => (
                 <React.Fragment key={index}>
                   <div className="relative rounded-md p-2 transition-all duration-300 hover:shadow-md" style={{ backgroundColor: ['#0e7490', '#0891b2', '#06b6d4', '#22d3ee'][index] || item.cor }}>
                     <div className="flex items-center justify-between">
@@ -553,7 +553,7 @@ export default function DiabetesChart({ filters, onNavigateToTable, localFilter,
                 </div>
               </div>
             </div>
-            <div className="space-y-3">{dados.examesAcompanhamento.map((exame, index) => (<div key={index} className="space-y-2"><div className="flex items-center justify-between text-sm"><span className="font-medium">{exame.exame}</span><span className="text-gray-600">{exame.emDia} ({exame.percentual}%)</span></div><div className={`relative w-full bg-gray-200 rounded-lg h-3 cursor-pointer hover:shadow-md transition-all duration-200`} onClick={(e) => handleFiltroInterativo('exame', exame.exame, `Exame: ${exame.exame}`, e)}><div className="absolute inset-0 rounded-lg transition-all duration-300" style={{ width: `${exame.percentual}%`, backgroundColor: exame.cor, opacity: filtroInterativo && filtroInterativo.tipo !== 'exame' || (filtroInterativo?.tipo === 'exame' && filtroInterativo?.valor !== exame.exame) ? 0.4 : 1, transform: filtroInterativo?.tipo === 'exame' && filtroInterativo?.valor === exame.exame ? 'scaleY(1.2)' : 'scaleY(1)', border: filtroInterativo?.tipo === 'exame' && filtroInterativo?.valor === exame.exame ? '2px solid #1e40af' : 'none' }} /></div></div>))}</div>
+            <div className="space-y-3">{dados.examesAcompanhamento.map((exame: any, index: number) => (<div key={index} className="space-y-2"><div className="flex items-center justify-between text-sm"><span className="font-medium">{exame.exame}</span><span className="text-gray-600">{exame.emDia} ({exame.percentual}%)</span></div><div className={`relative w-full bg-gray-200 rounded-lg h-3 cursor-pointer hover:shadow-md transition-all duration-200`} onClick={(e) => handleFiltroInterativo('exame', exame.exame, `Exame: ${exame.exame}`, e)}><div className="absolute inset-0 rounded-lg transition-all duration-300" style={{ width: `${exame.percentual}%`, backgroundColor: exame.cor, opacity: filtroInterativo && filtroInterativo.tipo !== 'exame' || (filtroInterativo?.tipo === 'exame' && filtroInterativo?.valor !== exame.exame) ? 0.4 : 1, transform: filtroInterativo?.tipo === 'exame' && filtroInterativo?.valor === exame.exame ? 'scaleY(1.2)' : 'scaleY(1)', border: filtroInterativo?.tipo === 'exame' && filtroInterativo?.valor === exame.exame ? '2px solid #1e40af' : 'none' }} /></div></div>))}</div>
           </div>
         </div>
         

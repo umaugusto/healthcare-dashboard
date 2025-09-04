@@ -41,7 +41,7 @@ const dadosBase = {
 };
 
 // Sistema de filtros simplificado específico para cobertura populacional
-function aplicarFiltroCobertura(dadosBase: typeof dadosBase, filtro: { tipo: string; valor: string; label: string }) {
+function aplicarFiltroCobertura(dadosBase: any, filtro: { tipo: string; valor: string; label: string }) {
   const dados = { ...dadosBase };
   
   // Simular correlações básicas baseadas no tipo de filtro

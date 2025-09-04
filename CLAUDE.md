@@ -78,3 +78,10 @@ Since this appears to be a standalone frontend without package.json, common deve
 - supabase url https://bgivemisrbkdtmbxojlu.supabase.co
 - supabase anon key eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnaXZlbWlzcmJrZHRtYnhvamx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5Mjg0NDIsImV4cCI6MjA3MjUwNDQ0Mn0.RjpXo32Es271mQEa2gCgegupvP0iuP1Ve1BEZf2WKO8
 - supabase service_role eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnaXZlbWlzcmJrZHRtYnhvamx1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjkyODQ0MiwiZXhwIjoyMDcyNTA0NDQyfQ.ZAVpzi6Qe8zuzTfIvsGCfjORY4EBi5iJqrFYe7YMZgA
+- Nome: NEXT_PUBLIC_SUPABASE_URL
+  Valor: https://bgivemisrbkdtmbxojlu.supabase.co
+
+  Nome: NEXT_PUBLIC_SUPABASE_ANON_KEY
+  Valor: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnaXZlbWlzcm    
+  JrZHRtYnhvamx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5Mjg0NDIsImV4cCI6MjA3MjUwNDQ0Mn0.mwYfMJQJ    
+  Qm-O4_-YJrZMJYrCgRUBw_M2BSB--m_qLG4

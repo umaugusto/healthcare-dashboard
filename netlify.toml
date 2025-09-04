@@ -1,0 +1,33 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "https://bgivemisrbkdtmbxojlu.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnaXZlbWlzcmJrZHRtYnhvamx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5Mjg0NDIsImV4cCI6MjA3MjUwNDQ0Mn0.mwYfMJQJQm-O4_-YJrZMJYrCgRUBw_M2BSB--m_qLG4"
+  NODE_VERSION = "18.x"
+
+[[redirects]]
+  from = "/*"
+  to = "/dashboard"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+# Fallback para páginas não encontradas
+[[redirects]]
+  from = "/"
+  to = "/dashboard"
+  status = 301
+
+# Headers de segurança
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"

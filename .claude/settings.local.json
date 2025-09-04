@@ -10,7 +10,10 @@
       "Bash(del fix-imports.js)",
       "Bash(psql:*)",
       "Bash(git add:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

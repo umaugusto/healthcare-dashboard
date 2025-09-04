@@ -31,8 +31,10 @@ import { ReabilitacaoChart } from './charts/ReabilitacaoChart';
 
 interface ChartsViewProps {
   filters: Filters;
-  onNavigateToTable: (type: string, condition?: string) => void;
+  onNavigateToTable: (viewType: string, context?: any) => void;
   activeTab: string;
+  tableContext?: any;
+  onNavigateToCharts?: () => void;
 }
 
 export default function ChartsView({ filters, onNavigateToTable, activeTab }: ChartsViewProps) {
