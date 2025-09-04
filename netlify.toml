@@ -8,7 +8,7 @@
 [build.environment]
   NEXT_PUBLIC_SUPABASE_URL = "https://bgivemisrbkdtmbxojlu.supabase.co"
   NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnaXZlbWlzcmJrZHRtYnhvamx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5Mjg0NDIsImV4cCI6MjA3MjUwNDQ0Mn0.mwYfMJQJQm-O4_-YJrZMJYrCgRUBw_M2BSB--m_qLG4"
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/*"

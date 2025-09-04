@@ -13,7 +13,12 @@
       "Bash(git init:*)",
       "Bash(git config:*)",
       "Bash(taskkill:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(choco upgrade:*)"
     ],
     "deny": [],
     "ask": []
